@@ -11,3 +11,11 @@ cd src
 composer init
 composer install
 ```
+
+# NPM
+Initialize the Node dependencies file:
+```shell
+cd src
+npm init
+npm install
+```

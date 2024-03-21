@@ -1,0 +1,17 @@
+{
+    "name": "flapjack/gallery",
+    "description": "Web page displaying images from a gallery",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Flapjack\\Gallery\\": "lib/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Stephen",
+            "email": "stephen@behnfeldt.pro"
+        }
+    ],
+    "require": {}
+}

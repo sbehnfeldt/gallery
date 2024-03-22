@@ -1,3 +1,28 @@
 body {
     background-color: #333;
 }
+
+main {
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+
+    > * {
+        flex-basis: 50%;
+        flex-grow: 1;
+    }
+}
+
+#announcements {
+    background-color: #cdcdcd;
+    color: #333333;
+}
+
+#gallery {
+    background-color: #222222;
+}
+
+footer {
+    background-color: #333333;
+    color: yellow;
+}

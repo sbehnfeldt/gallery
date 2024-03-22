@@ -4,8 +4,8 @@
   "description": "Web page displaying images from a gallery",
   "main": "index.js",
   "scripts": {
-    "sass:compile": "node-sass sass/main.scss public/css/style.css",
-    "sass:watch": "node-sass sass/main.scss public/css/style.css -w",
+    "sass:compile": "node-sass sass/main.scss public/style.css",
+    "sass:watch": "node-sass sass/main.scss public/style.css -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "directories": {

@@ -1,25 +1,45 @@
 body {
-    background-color: #333;
+    background-color: lightcyan;
 }
 
 main {
     height: 90vh;
     display: flex;
-    flex-direction: row;
 
-    > * {
+    section {
         flex-basis: 50%;
         flex-grow: 1;
     }
-}
 
-#announcements {
-    background-color: #cdcdcd;
-    color: #333333;
-}
 
-#gallery {
-    background-color: #222222;
+    #announcements {
+        //display: none;
+        background-color: #cdcdcd;
+        color: #333333;
+    }
+
+    #gallery {
+        display: flex;
+        flex-direction: column;
+
+        .row {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            //height: 50%;
+            border: 1px solid orangered;
+            overflow: hidden;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
+            }
+        }
+    }
 }
 
 footer {

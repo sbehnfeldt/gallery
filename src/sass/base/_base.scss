@@ -1,10 +1,20 @@
+:root {
+    --footer-height: 50px;
+}
+
 body {
-    background-color: lightcyan;
+    background-color: skyblue;
+    position: relative;
+    min-height: calc(100vh - var(--footer-height));
+    padding-bottom: var(--footer-height);
 }
 
 main {
+    position: absolute;
+    top: 50%;
     height: 90vh;
     display: flex;
+    transform: translateY(-50%);
 
     section {
         flex-basis: 50%;
@@ -27,9 +37,9 @@ main {
             display: flex;
             align-items: center;
             justify-content: space-around;
-            background-color: #333;
+            //background-color: #333;
             //height: 50%;
-            border: 1px solid orangered;
+            border: 2px solid transparent;
             overflow: hidden;
 
             img {
@@ -43,6 +53,10 @@ main {
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     background-color: #333333;
     color: yellow;
+    height: var(--footer-height);
 }

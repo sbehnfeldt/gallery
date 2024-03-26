@@ -1,14 +1,14 @@
 (function (global, $) {
     'use strict';
     console.log("Document ready");
-    const INTERVAL = 3000
+    const INTERVAL = 6000
 
     let $rows = $('#gallery div.row');
     $rows.each((idx, row) => {
         let $row = $(row);
         setTimeout(() => {
             setInterval(() => {
-                let $img = $('<img>').attr('src', '/image.php?' + Date.now());
+                let $img = $(`<img>`).attr('src', '/image.php?' + Date.now());
 
                 if (idx % 2) {
                     // Odd rows, push on from the right

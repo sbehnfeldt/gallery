@@ -1,7 +1,7 @@
 (function (global, $) {
     'use strict';
     console.log("Document ready");
-    const INTERVAL = 6000
+    const INTERVAL = 3000
 
 
     // Add image to end of a row (on the right)
@@ -38,8 +38,8 @@
     $rows.each((idx, row) => {
         let $row = $(row);
         setTimeout(() => {
-            setInterval(placeImg.bind(null, idx, $row), INTERVAL)
-        }, idx * (INTERVAL / $rows.length))
+            setInterval(placeImg.bind(null, idx, $row), INTERVAL * $rows.length)
+        }, idx * INTERVAL)
     });
 
 })(this, jQuery);

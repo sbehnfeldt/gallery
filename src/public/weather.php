@@ -12,22 +12,23 @@ if ( ! session_start()) {
     die('Cannot start session');
 }
 
+$config  = $config['weather'];
 $now     = time();
 $current = null;
-if (file_exists('../data/current-weather.json')) {
-    $t   = filemtime('../data/current-weather.json');
+$when    = $_SERVER['QUERY_STRING'];
+if (file_exists("../data/$when.json")) {
+    $t   = filemtime("../data/$when.json");
     $age = $now - $t;
-    if ($age < (4 * 60 * 60)) {
+    if ($age < $config['cache'][$when]) {
         // cache for 4 hours (for testing)
-        $current = file_get_contents('../data/current-weather.json');
+        $current = file_get_contents("../data/$when.json");
     }
 }
 if ( ! $current) {
-    $config      = $config['weather'];
     $queryString = http_build_query($config);
-    $apiUrl      = sprintf('https://api.openweathermap.org/data/2.5/weather?%s', $queryString);
+    $apiUrl      = sprintf('https://api.openweathermap.org/data/2.5/%s?%s', $when, $queryString);
     $current     = file_get_contents($apiUrl);
-    $f           = file_put_contents('../data/current-weather.json', $current);
+    $f           = file_put_contents("../data/$when.json", $current);
 }
 
 header('Content-Type: application/json');

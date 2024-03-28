@@ -57,19 +57,34 @@ footer {
     width: 100%;
     height: var(--footer-height);
 
+    padding-left: 2rem;
+    padding-right: 2rem;
+
     background-color: #333333;
     color: yellow;
 
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: space-between;
 
-    span.current,
-    span.forecast {
+    .clock {
 
-        img {
-            vertical-align: middle;
-        }
     }
 
+    .weather {
+
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        span.current,
+        span.forecast {
+
+            img {
+                vertical-align: middle;
+            }
+        }
+
+    }
 }

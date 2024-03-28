@@ -28,11 +28,28 @@
         setTimeout(doCurrentConditions, 5 * 60 * 1000);
     }
 
+    async function doForecast() {
+        let now        = Date.now();
+        const response = await fetch('/weather.php?forecast');
+        let forecast   = await response.json();
+        console.log(forecast);
+
+        let $forecast = $footer.find('span.forecast');
+        let $imgs     = $forecast.find('span.images');
+        $imgs.empty()
+    }
+
+    function doTime() {
+        let now    = Date.now();
+        let $clock = $footer.find('.clock');
+        $clock.text(moment(now).format('MMM D YYYY h:mm:ss a'));
+        setTimeout(doTime, 1000);
+    }
+
+
     doCurrentConditions();
+    // doForecast();
+    doTime();
 
 
-    let now = Date.now();
-    // console.log(now);
-    // console.log(moment(now));
-    // console.log( moment(now).format('YYYY-MM-D'));
 })(this, jQuery);

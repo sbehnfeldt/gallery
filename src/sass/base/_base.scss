@@ -64,11 +64,12 @@ footer {
     flex-direction: row;
     align-items: center;
 
-    span.conditions {
-        text-transform: capitalize;
+    span.current,
+    span.forecast {
+
+        img {
+            vertical-align: middle;
+        }
     }
 
-    img {
-        vertical-align: middle;
-    }
 }

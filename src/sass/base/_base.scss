@@ -73,7 +73,6 @@ footer {
 
     .weather {
 
-
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -84,6 +83,10 @@ footer {
             img {
                 vertical-align: middle;
             }
+        }
+
+        span.forecast {
+            display: none;
         }
 
     }

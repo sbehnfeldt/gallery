@@ -43,6 +43,11 @@
 
         // let now        = Date.now();
         // console.log(now);
+        if (date.getHours() < 13) {
+            // Today's forecast
+        } else {
+            // Tomorrow's forecast
+        }
 
         $forecastImgs.empty()
 
@@ -59,9 +64,24 @@
     }
 
 
+    function showCurrent() {
+        $forecast.fadeOut(500, () => {
+            $current.fadeIn(500);
+            setTimeout(showForecast, 5000);
+        });
+    }
+
+    function showForecast() {
+        $current.fadeOut(500, () => {
+            $forecast.fadeIn(500);
+            setTimeout(showCurrent, 5000);
+        });
+    }
+
     doCurrentConditions();
     doForecast();
     doTime();
+    showCurrent();
 
 
 })(this, jQuery);

@@ -25,7 +25,7 @@ if (file_exists("../data/$when.json")) {
     }
 }
 if ( ! $current) {
-    $queryString = http_build_query($config);
+    $queryString = http_build_query($config['api']);
     $apiUrl      = sprintf('https://api.openweathermap.org/data/2.5/%s?%s', $when, $queryString);
     $current     = file_get_contents($apiUrl);
     $f           = file_put_contents("../data/$when.json", $current);

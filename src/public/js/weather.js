@@ -27,32 +27,47 @@
             descriptions.push(weather['description']);
         }
         descriptions[0] = descriptions[0].charAt(0).toUpperCase() + descriptions[0].slice(1);
-        $currentText.html(`${descriptions.join(', ')}. ${Math.round(current['main']['temp'])} &deg;`);
+
+        $currentText.html(`${descriptions.join(', ')}, ${Math.round(current['main']['temp'])} &deg;`);
 
         setTimeout(doCurrentConditions, 5 * 60 * 1000);   // Repeat every 5 minutes
     }
 
+
     async function doForecast() {
         const response = await fetch('/weather.php?forecast');
         let forecast   = await response.json();
-        // console.log(forecast);
+        console.log(forecast);
 
-        let date = new Date();
-        console.log(date);
-        console.log(date.getHours());
+        let today = new Date();
 
-        // let now        = Date.now();
-        // console.log(now);
-        if (date.getHours() < 13) {
-            // Today's forecast
-        } else {
-            // Tomorrow's forecast
-        }
+        // if (today.getHours() < 13) {
+        //     let temp = doTodaysForecast(forecast['list'].filter((item) => {
+        //         let d = new Date(item['dt_txt']);
+        //         return d.getDate() === today.getDate();
+        //     }));
+        //     let sunset = moment.unix(forecast[ 'city' ][ 'sunset' ]).format( 'LT')
+        //     $forecast.text(`Today's weather: ${temp}. Sunset at ${sunset}`)
+        //
+        //
+        // } else {
+        //     $forecast.text("Tomorrow's forecast: ")
+        // }
 
-        $forecastImgs.empty()
+        // $forecastImgs.empty()
 
+        // setTimeout(doForecast, 3 * 60 * 60 * 1000);   // Repeat every 3 hours
+    }
 
-        setTimeout(doForecast, 3 * 60 * 60 * 1000);   // Repeat every 3 hours
+    function doTodaysForecast(items) {
+        console.log(items);
+        let forecast = [];
+
+        forecast.push(items[0].weather[0].main);
+        return forecast.join(', ');
+    }
+
+    function doTomorrowsForecast() {
     }
 
 
@@ -79,9 +94,9 @@
     }
 
     doCurrentConditions();
-    doForecast();
+    // doForecast();
+    // showCurrent();
     doTime();
-    showCurrent();
 
 
 })(this, jQuery);

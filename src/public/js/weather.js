@@ -20,6 +20,11 @@
         $currentText.empty();
 
         let descriptions = [];
+        if (current['wind']['speed'] > 20) {
+            descriptions.push('windy');
+        } else if (current['wind']['speed'] > 10) {
+            descriptions.push('breezy');
+        }
         for (let i = 0; i < current['weather'].length; i++) {
             let weather = current['weather'][i];
             let $img    = $(`<img src="https://openweathermap.org/img/wn/${weather['icon']}@2x.png" />`);

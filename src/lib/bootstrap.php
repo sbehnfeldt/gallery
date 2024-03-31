@@ -15,3 +15,51 @@ function bootstrap()
 
     return json_decode(file_get_contents('../config.json'), true);
 }
+
+function image(): string
+{
+    if ( ! array_key_exists('gallery_index', $_SESSION)) {
+        $_SESSION['gallery_index'] = 0;
+    }
+
+    $files = scandir('./gallery');
+    $files = array_filter($files, function ($filename) {
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+        return in_array(strtolower($ext), ['jpg', 'png']);
+    });
+    $files = array_values($files);
+
+    $img = file_get_contents('./gallery/' . $files[$_SESSION['gallery_index']]);
+
+    $_SESSION['gallery_index']++;
+    if ($_SESSION['gallery_index'] >= count($files)) {
+        $_SESSION['gallery_index'] = 0;
+    }
+
+    return $img;
+}
+
+function weather(): string
+{
+    global $config;
+
+    $now     = time();
+    $current = null;
+    if (file_exists("../data/weather.json")) {
+        $t   = filemtime("../data/weather.json");
+        $age = $now - $t;
+        if ($age < $config['weather']['cache']['current']) {
+            // cache for 4 hours (for testing)
+            $current = file_get_contents("../data/weather.json");
+        }
+    }
+    if ( ! $current) {
+        $queryString = http_build_query($config['weather']['api']);
+        $apiUrl      = sprintf('https://api.openweathermap.org/data/2.5/weather?%s', $queryString);
+        $current     = file_get_contents($apiUrl);
+        $f           = file_put_contents("../data/weather.json", $current);
+    }
+
+    return $current;
+}

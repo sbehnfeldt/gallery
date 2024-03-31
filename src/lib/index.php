@@ -1,3 +1,5 @@
+<?php
+global $config; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,9 +15,11 @@
                 <p>Remember your permission slips tomorrow!</p>
             </section>
             <section id="gallery">
-                <div class="row"></div>
-                <div class="row"></div>
-                <div class="row"></div>
+                <?php
+                for ($i = 0; $i < $config['gallery']['nRows']; $i++): ?>
+                    <div class="row"></div>
+                <?php
+                endfor; ?>
             </section>
         </main>
         <footer>

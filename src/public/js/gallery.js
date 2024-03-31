@@ -25,7 +25,7 @@
     }
 
     function placeImg(idx, $row) {
-        let $img = $(`<img>`).attr('src', '/image.php?' + Date.now());
+        let $img = $(`<img>`).attr('src', '/image?' + Date.now());
         if (idx % 2) {
             pushImage($row, $img);
         } else {

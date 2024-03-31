@@ -13,7 +13,7 @@
 
 
     async function doCurrentConditions() {
-        let response = await fetch('/weather.php?weather');
+        let response = await fetch('/weather?weather');
         let current  = await response.json();
 
         $currentImgs.empty();
@@ -40,7 +40,7 @@
 
 
     async function doForecast() {
-        const response = await fetch('/weather.php?forecast');
+        const response = await fetch('/weather?forecast');
         let forecast   = await response.json();
         console.log(forecast);
 

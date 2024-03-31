@@ -1,19 +1,11 @@
 <?php
-require '../vendor/autoload.php';
-if ( ! file_exists('../sessions')) {
-    if ( ! mkdir('../sessions')) {
-        die('Cannot make sessions directory');
-    }
-}
-session_save_path('../sessions');
-if ( ! session_start()) {
-    die('Cannot start session');
-}
+require '../lib/bootstrap.php';
+
+$config = bootstrap();
 
 if ( ! array_key_exists('gallery_index', $_SESSION)) {
     $_SESSION['gallery_index'] = 0;
 }
-
 
 $files = scandir('./gallery');
 $files = array_filter($files, function ($filename) {

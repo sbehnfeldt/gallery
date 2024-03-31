@@ -1,17 +1,8 @@
 <?php
-require '../vendor/autoload.php';
+require '../lib/bootstrap.php';
 
-$config = json_decode(file_get_contents('../config.json'), true);
-if ( ! file_exists('../sessions')) {
-    if ( ! mkdir('../sessions')) {
-        die('Cannot make sessions directory');
-    }
-}
-session_save_path('../sessions');
-if ( ! session_start()) {
-    die('Cannot start session');
-}
 
+$config  = bootstrap();
 $config  = $config['weather'];
 $now     = time();
 $current = null;

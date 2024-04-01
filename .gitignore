@@ -3,3 +3,7 @@
 /src/node_modules/
 /src/public/css/style.css
 /node_modules/
+/src/config.json
+/dist/
+/src/public/style.css
+/src/logs/

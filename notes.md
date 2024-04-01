@@ -40,6 +40,7 @@ Install Webpack, the Webpack CLI, and the Webpack Dev Server (for hot-module rep
 
 ```shell
 npm i webpack webpack-cli webpack-dev-server -D
+npm i babel-loader @babel/core @babel/preset-env -D
 ```
 
 Add the following script to package.json:

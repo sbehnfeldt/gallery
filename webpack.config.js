@@ -1,4 +1,5 @@
-const path = require('path');
+const path                 = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     mode: 'development',
@@ -6,6 +7,9 @@ module.exports = {
     devServer: {
         static: './dist'
     },
+    plugins: [new MiniCssExtractPlugin({
+        filename: '[name].css'
+    })],
     module: {
         rules: [
             {
@@ -15,7 +19,14 @@ module.exports = {
             },
             {
                 test: /\.scss$/i,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
+                ]
             }
         ]
     },

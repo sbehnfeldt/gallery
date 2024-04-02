@@ -1,11 +1,15 @@
 # Git
+
 Set up a git repository
+
 ```shell
 git init .
 ```
 
 # Composer
+
 Initialize the composer dependency file
+
 ```shell
 cd src
 composer init
@@ -13,7 +17,9 @@ composer install
 ```
 
 # NPM
+
 Initialize the Node dependencies file:
+
 ```shell
 cd src
 npm init
@@ -21,6 +27,7 @@ npm install
 ```
 
 # SASS
+
 Install node-sass as a node dependency:
 
 ```shell
@@ -41,10 +48,16 @@ Install Webpack, the Webpack CLI, and the Webpack Dev Server (for hot-module rep
 ```shell
 npm i webpack webpack-cli webpack-dev-server -D
 npm i babel-loader @babel/core @babel/preset-env -D
+npm i style-loader css-loader -D
+npm i sass-loader sass -D 
 ```
 
-Add the following script to package.json:
-`"dev" : "webpack-dev-server --open",`
+Add the following scripts to package.json:
+
+```
+    "build": "webpack",
+    "dev" : "webpack-dev-server --open",
+```
 
 Add the following configuration settings to webpack.config.js:
 
@@ -52,4 +65,13 @@ Add the following configuration settings to webpack.config.js:
 devServer: {
     static: './dist'
 }   
+```
+
+Add the following module rule to webpack.config.js:
+
+```
+    {
+        test: /\.scss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+    }
 ```

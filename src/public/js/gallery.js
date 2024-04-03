@@ -1,3 +1,5 @@
+import jQuery from 'jquery'
+
 (function (global, $) {
     'use strict';
     console.log("Document ready");

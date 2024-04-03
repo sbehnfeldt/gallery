@@ -1,6 +1,3 @@
 import './sass/main.scss';
-
-const foo = (name) => {
-    console.log(`Hello ${name}`);
-}
-foo('Stephen');
+import './public/js/gallery'
+import './public/js/weather'

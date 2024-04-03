@@ -5,8 +5,9 @@ module.exports = {
     mode: 'development',
     entry: './src/index.js',
     devServer: {
-        static: './dist'
+        static: './dist/public'
     },
+    devtool: 'inline-source-map',
     plugins: [new MiniCssExtractPlugin({
         filename: '[name].css'
     })],
@@ -32,6 +33,7 @@ module.exports = {
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist/public'),
+        clean: true
     }
 }

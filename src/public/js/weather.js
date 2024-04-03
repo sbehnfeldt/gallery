@@ -1,3 +1,7 @@
+import jQuery from 'jquery'
+import moment from 'moment'
+
+
 (async function (global, $) {
     'use strict';
 

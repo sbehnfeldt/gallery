@@ -13,5 +13,7 @@
             "email": "stephen@behnfeldt.pro"
         }
     ],
-    "require": {}
+    "require": {
+        "phing/phing": "^3.0"
+    }
 }

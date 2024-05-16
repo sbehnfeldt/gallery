@@ -58,25 +58,24 @@ global $config; ?>
                 <div><img src="/imgs/leaf3.png" alt=""></div>
             </div>
         </section>
+        <canvas id="cloudCanvas" width="400" height="200"></canvas>
+        <section class="clouds">
+            <div class="set">
+                <div>
+                    <img src="/imgs/cloud-8102.png" alt="">
+                </div>
+            </div>
+        </section>
         <footer>
             <div class="weather">
                 <span class="current">Current Conditions:
                     <span class="images"></span>
                     <span class="text"></span>
                 </span>
-                <!--                <span class="forecast">Tomorrow's Forecast:-->
-                <!--                    <span class="images"></span>-->
-                <!--                    <span class="text"></span>-->
-                <!--                </span>-->
             </div>
             <div class="clock"></div>
         </footer>
 
-        <!--        <script type="application/javascript"-->
-        <!--                src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>-->
-        <!--        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>-->
-        <!--        <script src="/js/gallery.js"></script>-->
-        <!--        <script src="/js/weather.js"></script>-->
         <script src="/bundle.js"></script>
     </body>
 </html>

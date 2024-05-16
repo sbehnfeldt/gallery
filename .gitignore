@@ -7,3 +7,6 @@
 /dist/
 /src/public/style.css
 /src/logs/
+/src/sessions/
+/src/public/bundle.js
+/src/public/test.php

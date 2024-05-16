@@ -4,11 +4,11 @@
   "description": "Web page displaying images from a gallery",
   "main": "index.js",
   "scripts": {
-    "sass:compile": "node-sass src/sass/main.scss src/public/style.css",
+    "sass": "node-sass src/sass/main.scss src/public/style.css",
     "sass:watch": "node-sass src/sass/main.scss src/public/style.css -w",
-    "watch": "webpack --watch",
+    "bundle": "webpack",
+    "bundle:watch": "webpack --watch",
     "dev": "webpack-dev-server --open",
-    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "directories": {

@@ -16,10 +16,20 @@ function bootstrap()
     return json_decode(file_get_contents('../config.json'), true);
 }
 
+/**
+ * @return string
+ * @throws Exception
+ */
 function image(): string
 {
     if ( ! array_key_exists('gallery_index', $_SESSION)) {
         $_SESSION['gallery_index'] = 0;
+    }
+
+    if ( ! file_exists('./gallery')) {
+        if ( ! mkdir('./gallery')) {
+            throw new Exception('Cannot create gallery directory');
+        }
     }
 
     $files = scandir('./gallery');

@@ -13,7 +13,24 @@ function bootstrap()
         die('Cannot start session');
     }
 
-    return json_decode(file_get_contents('../config.json'), true);
+    if ( ! file_exists('gallery')) {
+        if ( ! mkdir('gallery')) {
+            die('Cannot make gallery directory');
+        }
+    }
+
+    if ( ! file_exists('../config.json')) {
+        die('Cannot find configuration file');
+    }
+    if (false === ($contents = file_get_contents('../config.json'))) {
+        die('Cannot read configuration file');
+    }
+
+    if (null === ($config = json_decode($contents, true))) {
+        die('Cannot parse contents of configuration file');
+    }
+
+    return $config;
 }
 
 /**

@@ -5,78 +5,39 @@ import moment from 'moment'
 (async function (global, $) {
     'use strict';
 
-    let $footer = $('footer').first();
+    let $footer  = $('footer').first();
+    let $weather = $footer.find('div.weather');
 
-    let $current     = $footer.find('span.current');
-    let $currentImgs = $current.find('span.images');
-    let $currentText = $current.find('span.text')
-
-    let $forecast     = $footer.find('span.forecast');
-    let $forecastImgs = $forecast.find('span.images');
-    let $forecastText = $forecast.find('span.text');
+    let $current     = $weather.find('span.current');
+    let $currentImgs = $weather.find('span.images');
+    let $currentText = $weather.find('span.text')
 
 
     async function doCurrentConditions() {
-        let response = await fetch('/weather?weather');
-        let current  = await response.json();
+        let response   = await fetch('/weather?weather');
+        let conditions = await response.json();
 
+        $current.empty().html(`Current conditions in ${conditions.name}: `)
         $currentImgs.empty();
-        $currentText.empty();
+        $currentText.empty()
 
         let descriptions = [];
-        if (current['wind']['speed'] > 20) {
+        if (conditions['wind']['speed'] > 20) {
             descriptions.push('windy');
-        } else if (current['wind']['speed'] > 10) {
+        } else if (conditions['wind']['speed'] > 10) {
             descriptions.push('breezy');
         }
-        for (let i = 0; i < current['weather'].length; i++) {
-            let weather = current['weather'][i];
+        for (let i = 0; i < conditions['weather'].length; i++) {
+            let weather = conditions['weather'][i];
             let $img    = $(`<img src="https://openweathermap.org/img/wn/${weather['icon']}@2x.png" />`);
             $currentImgs.append($img);
             descriptions.push(weather['description']);
         }
         descriptions[0] = descriptions[0].charAt(0).toUpperCase() + descriptions[0].slice(1);
 
-        $currentText.html(`${descriptions.join(', ')}, ${Math.round(current['main']['temp'])} &deg;`);
+        $currentText.html(`${descriptions.join(', ')}, ${Math.round(conditions['main']['temp'])} &deg;`);
 
         setTimeout(doCurrentConditions, 5 * 60 * 1000);   // Repeat every 5 minutes
-    }
-
-
-    async function doForecast() {
-        const response = await fetch('/weather?forecast');
-        let forecast   = await response.json();
-        console.log(forecast);
-
-        let today = new Date();
-
-        // if (today.getHours() < 13) {
-        //     let temp = doTodaysForecast(forecast['list'].filter((item) => {
-        //         let d = new Date(item['dt_txt']);
-        //         return d.getDate() === today.getDate();
-        //     }));
-        //     let sunset = moment.unix(forecast[ 'city' ][ 'sunset' ]).format( 'LT')
-        //     $forecast.text(`Today's weather: ${temp}. Sunset at ${sunset}`)
-        //
-        //
-        // } else {
-        //     $forecast.text("Tomorrow's forecast: ")
-        // }
-
-        // $forecastImgs.empty()
-
-        // setTimeout(doForecast, 3 * 60 * 60 * 1000);   // Repeat every 3 hours
-    }
-
-    function doTodaysForecast(items) {
-        console.log(items);
-        let forecast = [];
-
-        forecast.push(items[0].weather[0].main);
-        return forecast.join(', ');
-    }
-
-    function doTomorrowsForecast() {
     }
 
 
@@ -87,20 +48,6 @@ import moment from 'moment'
         setTimeout(doTime, 1000);   // Update every second
     }
 
-
-    function showCurrent() {
-        $forecast.fadeOut(500, () => {
-            $current.fadeIn(500);
-            setTimeout(showForecast, 5000);
-        });
-    }
-
-    function showForecast() {
-        $current.fadeOut(500, () => {
-            $forecast.fadeIn(500);
-            setTimeout(showCurrent, 5000);
-        });
-    }
 
     doCurrentConditions();
     // doForecast();

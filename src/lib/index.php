@@ -4,11 +4,11 @@ global $config; ?>
 <html lang="en">
     <head>
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-        <!--        <link rel="stylesheet" href="/main.css">-->
         <link rel="stylesheet" href="/style.css">
         <meta charset="UTF-8">
         <title>Camelot Gallery</title>
     </head>
+
     <body>
         <main>
             <section id="announcements">
@@ -23,6 +23,7 @@ global $config; ?>
                 endfor; ?>
             </section>
         </main>
+
         <section class="falling-leaves">
             <div class="set">
                 <div><img src="/imgs/leaf1.png" alt=""></div>
@@ -58,7 +59,9 @@ global $config; ?>
                 <div><img src="/imgs/leaf3.png" alt=""></div>
             </div>
         </section>
+
         <canvas id="cloudCanvas" width="400" height="200"></canvas>
+
         <section class="clouds">
             <div class="set">
                 <div>
@@ -66,12 +69,12 @@ global $config; ?>
                 </div>
             </div>
         </section>
+
         <footer>
             <div class="weather">
-                <span class="current">Current Conditions:
-                    <span class="images"></span>
-                    <span class="text"></span>
-                </span>
+                <span class="current"></span>
+                <span class="images"></span>
+                <span class="text"></span>
             </div>
             <div class="clock"></div>
         </footer>
